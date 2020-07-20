@@ -1,0 +1,24 @@
+/** colors **/
+$color-primary: var(--v-primary-base);
+$color-secondary: var(--v-secondary-base);
+$brand-primary: var(--v-primary-base) !important;
+
+.v-application {
+  font-family: "Ubuntu", sans-serif !important;
+}
+.v-card--reveal {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  opacity: 0.8;
+  position: absolute;
+  width: 100%;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.v-badge__badge {
+  font-weight: bold;
+}
