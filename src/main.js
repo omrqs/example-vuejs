@@ -4,7 +4,6 @@ import i18n from "@/i18n";
 import router from "./router";
 import store from "./store";
 import VueMask from "v-mask";
-import LocalStorage from "@/LocalStorage";
 import Filters from "@/Filters";
 import { sync } from "vuex-router-sync";
 
@@ -28,4 +27,3 @@ new Vue({
 }).$mount("#app");
 
 Filters();
-LocalStorage();
