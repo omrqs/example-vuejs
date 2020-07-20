@@ -5,7 +5,11 @@
   "scripts": {
     "serve": "vue-cli-service serve --fix --port=8080",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test:spec": "jest -c jest.config.spec.json --forceExit --detectOpenHandles",
+    "test:unit": "jest -c jest.config.unit.json --forceExit --detectOpenHandles",
+    "test:coverage": "jest --coverage --forceExit --detectOpenHandles",
+    "test:watch": "jest --watch"
   },
   "husky": {
     "hooks": {
@@ -42,6 +46,7 @@
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.1.2",
     "husky": "^4.2.5",
+    "jest": "^26.1.0",
     "prettier": "^1.19.1",
     "sass": "^1.26.7",
     "sass-loader": "^8.0.0",
