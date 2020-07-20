@@ -6,12 +6,10 @@ import store from "@/store";
 var axios = axiosLib.create({
   baseURL: process.env.VUE_APP_API,
   headers: {
-    authorization: "",
     accept: "application/json",
     "content-type": "application/json",
-    "x-api-key": "token1"
-  },
-  withCredentials: true
+    "X-API-KEY": "token1"
+  }
 });
 
 axios.interceptors.request.use(
