@@ -1,7 +1,6 @@
 <template>
-  <v-content>
+  <v-main>
     <div id="core-view">
-      <core-alerts />
       <v-fade-transition
         mode="out-in"
         @before-enter="loadIn"
@@ -10,7 +9,7 @@
         <router-view />
       </v-fade-transition>
     </div>
-  </v-content>
+  </v-main>
 </template>
 
 <script>

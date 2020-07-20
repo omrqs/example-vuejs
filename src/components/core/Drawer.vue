@@ -8,7 +8,7 @@
     app
     floating
     persistent
-    mobile-break-point="991"
+    mobile-breakpoint="991"
   >
     <v-list dense>
       <template v-for="entry in entries">
