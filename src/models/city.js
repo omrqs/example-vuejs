@@ -18,7 +18,9 @@ class City extends Persist {
   }
 
   static enums() {
-    return {};
+    return {
+      states: []
+    };
   }
 
   static validators() {
@@ -45,8 +47,17 @@ class City extends Persist {
     object.attrs = attrs;
 
     object.attrsList.name = attrs.name;
-    object.attrsList.state_name = attrs.state.name;
-    object.attrsList.state_abrev = attrs.state.abrev.toUpperCase();
+
+    if (data.state) {
+      object.attrsList.state =
+        typeof data.state.id !== "undefined" ? data.state.id : "";
+      object.attrsList.state_name =
+        typeof data.state.name !== "undefined" ? data.state.name : "";
+      object.attrsList.state_abrev =
+        typeof data.state.abrev !== "undefined"
+          ? data.state.abrev.toUpperCase()
+          : "";
+    }
 
     return object;
   }

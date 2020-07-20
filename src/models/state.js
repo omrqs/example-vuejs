@@ -33,7 +33,6 @@ class State extends Persist {
   }
 
   static parserFrom(data) {
-    console.log(data);
     let object = new State();
     let attrs = {};
 

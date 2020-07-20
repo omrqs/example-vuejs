@@ -29,9 +29,12 @@
             <v-row>
               <v-col cols="12">
                 <v-autocomplete
-                  :items="items.states"
                   v-model="fields.state"
+                  :items="items.states"
                   :rules="rules.state"
+                  item-value="id"
+                  item-text="name"
+                  cache-items
                   placeholder="Estado"
                   label="Estado"
                   outlined
