@@ -39,7 +39,9 @@ export default {
         .then(entry => {
           this.loading = false;
 
-          return entry;
+          return this.model.constructor.parserFrom(
+            entry.data[this.model.modelName.toLowerCase()]
+          ).attrsList;
         })
         .catch(() => {
           this.notFound = true;

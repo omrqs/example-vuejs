@@ -7,6 +7,7 @@ class City extends Persist {
 
     this.endpoints = Endpoints;
     this.modelName = "City";
+    this.collectionName = "cities";
     this.api = {
       endpoint: "/city"
     };
@@ -38,10 +39,14 @@ class City extends Persist {
     if (typeof data.id !== "undefined") {
       attrs.id = data.id;
     }
+    attrs.state = typeof data.state !== "undefined" ? data.state : null;
     attrs.name = typeof data.name !== "undefined" ? data.name : null;
-    attrs.abrev = typeof data.abrev !== "undefined" ? data.abrev : null;
 
     object.attrs = attrs;
+
+    object.attrsList.name = attrs.name;
+    object.attrsList.state_name = attrs.state.name;
+    object.attrsList.state_abrev = attrs.state.abrev.toUpperCase();
 
     return object;
   }

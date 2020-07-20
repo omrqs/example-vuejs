@@ -17,7 +17,7 @@ export default {
       {
         text: "Sigla",
         align: "start",
-        value: "abrev"
+        value: "state_abrev"
       },
       {
         text: "Nome",

@@ -7,6 +7,7 @@ class State extends Persist {
 
     this.endpoints = Endpoints;
     this.modelName = "State";
+    this.collectionName = "states";
     this.api = {
       endpoint: "/state"
     };
@@ -32,6 +33,7 @@ class State extends Persist {
   }
 
   static parserFrom(data) {
+    console.log(data);
     let object = new State();
     let attrs = {};
 
@@ -39,9 +41,11 @@ class State extends Persist {
       attrs.id = data.id;
     }
     attrs.name = typeof data.name !== "undefined" ? data.name : null;
-    attrs.abrev = typeof data.abrev !== "undefined" ? data.abrev : null;
+    attrs.abrev =
+      typeof data.abrev !== "undefined" ? data.abrev.toUpperCase() : null;
 
     object.attrs = attrs;
+    object.attrsList = attrs;
 
     return object;
   }

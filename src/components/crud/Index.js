@@ -63,7 +63,8 @@ export default {
       await this.model.endpoints
         .getList()
         .then(entries => {
-          entries.map(entry => {
+          let items = entries.data[this.model.collectionName];
+          items.map(entry => {
             this.entries.push(
               this.model.constructor.parserFrom(entry).attrsList
             );
@@ -73,15 +74,6 @@ export default {
           this.loading = false;
         });
     },
-    showQr(item) {
-      this.qrDialog = true;
-      this.currentItem = item;
-    },
-    discardQr() {
-      this.qrDialog = false;
-      this.currentItem = {};
-    },
-
     deleteItem(item) {
       this.deleteDialog = true;
       this.currentItem = item;
