@@ -82,7 +82,7 @@
         <v-card-text>
           <p>
             Deseja remover permanentemente
-            <span class="font-weight-bold">"{{ currentItem.title }}"</span>?
+            <span class="font-weight-bold">"{{ currentItem.name }}"</span>?
           </p>
         </v-card-text>
 

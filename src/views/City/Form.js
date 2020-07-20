@@ -22,7 +22,6 @@ export default {
   },
   watch: {
     states: function(val) {
-      console.log("items", val);
       this.items.states = val;
     }
   }

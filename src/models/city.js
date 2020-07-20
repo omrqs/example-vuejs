@@ -46,6 +46,7 @@ class City extends Persist {
 
     object.attrs = attrs;
 
+    object.attrsList.id = attrs.id;
     object.attrsList.name = attrs.name;
 
     if (data.state) {

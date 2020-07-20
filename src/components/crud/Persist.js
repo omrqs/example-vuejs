@@ -1,6 +1,5 @@
-import store from "@/store/index";
+import Vue from "vue";
 import Listeners from "./Listeners";
-// import { db } from "@/plugins/firebase";
 
 class Persist extends Listeners {
   constructor() {
@@ -8,10 +7,6 @@ class Persist extends Listeners {
 
     this.attrs = {};
     this.attrsList = {};
-  }
-
-  conn() {
-    // return db.collection(this.modelName.toLowerCase());
   }
 
   setId(id) {
@@ -28,23 +23,13 @@ class Persist extends Listeners {
     await this.prePersist();
     await this.preCreate();
 
-    // return this.conn()
-    //   .add({
-    //     createdOn: new Date(),
-    //     content: this.attrs,
-    //     userId: this.getUid()
-    //   })
-    //   .then(async ref => {
-    //     this.setId(ref.id);
+    let endpoint = `${process.env.VUE_APP_API}${this.api.endpoint}`;
+    return Vue.prototype.$api.post(endpoint, this.attrs).then(async resp => {
+      await this.postPersist();
+      await this.postCreate();
 
-    //     await this.postPersist();
-    //     await this.postCreate();
-
-    //     return ref;
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+      return resp.data;
+    });
   }
 
   async save() {
@@ -55,36 +40,26 @@ class Persist extends Listeners {
     await this.prePersist();
     await this.preUpdate();
 
-    // return this.conn()
-    //   .doc(this.getId())
-    //   .update({
-    //     updatedOn: new Date(),
-    //     content: this.attrs
-    //   })
-    //   .then(async ref => {
-    //     await this.postPersist();
-    //     await this.postUpdate();
+    let endpoint = `${process.env.VUE_APP_API}${
+      this.api.endpoint
+    }/${this.getId()}`;
+    return Vue.prototype.$api.patch(endpoint, this.attrs).then(async resp => {
+      await this.postPersist();
+      await this.postUpdate();
 
-    //     return ref;
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+      return resp.data;
+    });
   }
 
   async delete(id) {
     await this.preRemove();
 
-    // return this.conn()
-    //   .doc(id)
-    //   .delete()
-    //   .then(async ref => {
-    //     await this.postRemove();
-    //     return ref;
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    let endpoint = `${process.env.VUE_APP_API}${this.api.endpoint}/${id}`;
+    return Vue.prototype.$api.delete(endpoint).then(async resp => {
+      await this.postRemove();
+
+      return resp.data;
+    });
   }
 }
 
